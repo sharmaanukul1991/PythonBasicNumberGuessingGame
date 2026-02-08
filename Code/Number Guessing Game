@@ -1,0 +1,72 @@
+ComputerGenratedNumber= 777
+MaxAttempts = 10
+
+
+#region  Math Function
+
+#Is Prime Check
+def IsPrime(number):
+    for i in range(2,(number+1)/2,2):
+        if(number%i == 0):
+            return False
+    return True
+
+# Is Palindrom Check
+def IsPalindrom(number):
+     print("Palindrom Logic ")
+    
+# Is Odd or Even
+def IsOddOrEven(number):
+    if(number%2 == 0):
+        return "Even"
+    else:
+        return "odd"
+    
+# Get Divisior Up to 100
+def GetDivisor(number,n):
+    divisor = []
+    for i in range(2,(n+1)//2,2):
+        if(number%i==0):
+            divisor.append(i)
+    
+    return divisor
+
+#endregion Math Function
+
+
+def resultBackToplayer(number, numberOfattempts):
+    print(number)
+    if int(number) == ComputerGenratedNumber:
+        return "Well You Guess is Correctly"
+    elif int(number) > ComputerGenratedNumber:
+        return "you guess is very high"
+    elif int(number) < ComputerGenratedNumber:
+        return "your guess is very low"
+    else :
+        return "please enter valid number"
+
+
+def main():
+    UserAttempts = 1
+    print("Hello!!! Dear Player you want to play")
+    print("Please enter Y or N")
+
+    confirmation = input()
+    while not(confirmation == 'Y' or confirmation == 'N'):
+        confirmation = input("Please Enter Y Or N Only")
+    if confirmation=='N':
+        exit
+    if confirmation =='Y':
+      print("I am guessing one Number Now you have to told me what I am Thinking, "
+      "if you are right your name will be visible for 20 days on my game history, maximum you have",MaxAttempts,"attempts for right guess"
+      "you can exit at any point when you hit X")
+      start = input("press any key to play except x")
+      if start !='x':
+        while UserAttempts < MaxAttempts:
+            print("your ", UserAttempts," attempt. Close by x")
+            userChoice = input()
+            result = resultBackToplayer(int(userChoice),10)
+            UserAttempts+=1
+            print(result)
+
+main()
